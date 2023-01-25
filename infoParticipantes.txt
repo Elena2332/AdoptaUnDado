@@ -1,0 +1,9 @@
+Participantes
+ - Patricia Bastida Merino
+ - Ander Rodriguez Gancedo
+ - Elena Sanz Espada
+
+Informacion sobre el proyecto
+  Por tres semanas nos dedicaremos a desarrollar una pagina web donde los usuarios puedan
+brindar una nueva vida a los dados que se encuentran en adopcion por una infima suma de dinero.
+A su vez tendremos que crear la documentacion correspondiente.
