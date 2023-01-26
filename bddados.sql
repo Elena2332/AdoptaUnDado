@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 26-01-2023 a las 10:36:09
+-- Tiempo de generación: 26-01-2023 a las 18:17:00
 -- Versión del servidor: 5.7.36
 -- Versión de PHP: 7.4.26
 
@@ -93,7 +93,7 @@ CREATE TABLE IF NOT EXISTS `usuario` (
   `nombre` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
   `apellido` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
   `email` varchar(70) COLLATE utf8_spanish_ci NOT NULL,
-  `contraseña` varchar(25) COLLATE utf8_spanish_ci NOT NULL,
+  `password` varchar(25) COLLATE utf8_spanish_ci NOT NULL,
   `descripcion` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
   `direccion` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
   `municipio` varchar(60) COLLATE utf8_spanish_ci NOT NULL,
@@ -110,7 +110,7 @@ CREATE TABLE IF NOT EXISTS `usuario` (
 -- Volcado de datos para la tabla `usuario`
 --
 
-INSERT INTO `usuario` (`dni`, `nombre`, `apellido`, `email`, `contraseña`, `descripcion`, `direccion`, `municipio`, `provincia`, `pais`, `codigopostal`, `telefono`, `imagen`, `rol`) VALUES
+INSERT INTO `usuario` (`dni`, `nombre`, `apellido`, `email`, `password`, `descripcion`, `direccion`, `municipio`, `provincia`, `pais`, `codigopostal`, `telefono`, `imagen`, `rol`) VALUES
 ('0', 'asd', 'diosito', 'admin@asd.com', 'asd', 'Mafioso de los dados. Buenos dias', 'el pozo', 'desgraciado', 'Bello', 'olimpo', '66666', '000000000', 0x30, 1),
 ('1', 'admin', 'armin', 'admin@admin.com', 'admin', 'Criador de Dados', 'mikasa', 'muro maria', 'paradis', 'eldia', '00000', '000000000', 0x30, 0);
 COMMIT;
