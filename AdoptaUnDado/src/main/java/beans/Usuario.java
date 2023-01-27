@@ -27,6 +27,22 @@ public class Usuario {
 		this.rol = rol;
 	}
 	
+	public Usuario(String dni, String nombre, String apellido, String password) {
+		this.dni = dni;
+		this.nombre = nombre;
+		this.apellido = apellido;
+		this.password = password;
+		this.descripcion = "";
+		this.direccion = "";
+		this.municipio = "";
+		this.provincia = "";
+		this.pais = "";
+		this.codigopostal = "";
+		this.email = "";
+		this.telefono = "";
+		this.imagen = "";
+		this.rol = 1;
+	}
 	
 	public Usuario() {
 		super();
