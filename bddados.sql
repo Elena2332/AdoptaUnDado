@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 26-01-2023 a las 18:17:00
+-- Tiempo de generación: 27-01-2023 a las 08:16:14
 -- Versión del servidor: 5.7.36
 -- Versión de PHP: 7.4.26
 
@@ -33,7 +33,7 @@ CREATE TABLE IF NOT EXISTS `articulo` (
   `nombre` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
   `categoria` int(11) NOT NULL,
   `precio` double NOT NULL,
-  `imagen` blob NOT NULL,
+  `imagen` blob,
   `stock` int(11) NOT NULL COMMENT 'cantidad disponible',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
@@ -101,7 +101,7 @@ CREATE TABLE IF NOT EXISTS `usuario` (
   `pais` varchar(60) COLLATE utf8_spanish_ci NOT NULL,
   `codigopostal` varchar(10) COLLATE utf8_spanish_ci NOT NULL,
   `telefono` varchar(15) COLLATE utf8_spanish_ci NOT NULL,
-  `imagen` blob NOT NULL,
+  `imagen` blob,
   `rol` int(1) NOT NULL COMMENT '0:admin 1:usuario',
   PRIMARY KEY (`dni`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
@@ -111,8 +111,8 @@ CREATE TABLE IF NOT EXISTS `usuario` (
 --
 
 INSERT INTO `usuario` (`dni`, `nombre`, `apellido`, `email`, `password`, `descripcion`, `direccion`, `municipio`, `provincia`, `pais`, `codigopostal`, `telefono`, `imagen`, `rol`) VALUES
-('0', 'asd', 'diosito', 'admin@asd.com', 'asd', 'Mafioso de los dados. Buenos dias', 'el pozo', 'desgraciado', 'Bello', 'olimpo', '66666', '000000000', 0x30, 1),
-('1', 'admin', 'armin', 'admin@admin.com', 'admin', 'Criador de Dados', 'mikasa', 'muro maria', 'paradis', 'eldia', '00000', '000000000', 0x30, 0);
+('0', 'asd', 'diosito', 'admin@asd.com', 'asd', 'Mafioso de los dados. Buenos dias', 'el pozo', 'desgraciado', 'Bello', 'olimpo', '66666', '000000000', NULL, 1),
+('1', 'admin', 'armin', 'admin@admin.com', 'admin', 'Criador de Dados', 'mikasa', 'muro maria', 'paradis', 'eldia', '00000', '000000000', NULL, 0);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
