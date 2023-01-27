@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 27-01-2023 a las 08:16:14
+-- Tiempo de generación: 27-01-2023 a las 11:07:52
 -- Versión del servidor: 5.7.36
 -- Versión de PHP: 7.4.26
 
@@ -31,7 +31,7 @@ DROP TABLE IF EXISTS `articulo`;
 CREATE TABLE IF NOT EXISTS `articulo` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
-  `categoria` int(11) NOT NULL,
+  `idCategoria` int(11) NOT NULL,
   `precio` double NOT NULL,
   `imagen` blob,
   `stock` int(11) NOT NULL COMMENT 'cantidad disponible',
@@ -73,8 +73,8 @@ CREATE TABLE IF NOT EXISTS `compra` (
 DROP TABLE IF EXISTS `lineapedido`;
 CREATE TABLE IF NOT EXISTS `lineapedido` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `usuario` varchar(9) COLLATE utf8_spanish_ci NOT NULL COMMENT 'dni de tabla usuario',
-  `articulo` int(11) NOT NULL,
+  `dniUsuario` varchar(9) COLLATE utf8_spanish_ci NOT NULL COMMENT 'dni de tabla usuario',
+  `idArticulo` int(11) NOT NULL,
   `precio` double NOT NULL,
   `cantidad` int(11) NOT NULL,
   `id_compra` int(11) NOT NULL COMMENT 'id de tabla compra',
