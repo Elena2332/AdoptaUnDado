@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 27-01-2023 a las 11:07:52
+-- Tiempo de generación: 01-02-2023 a las 08:42:02
 -- Versión del servidor: 5.7.36
 -- Versión de PHP: 7.4.26
 
@@ -35,7 +35,8 @@ CREATE TABLE IF NOT EXISTS `articulo` (
   `precio` double NOT NULL,
   `imagen` blob,
   `stock` int(11) NOT NULL COMMENT 'cantidad disponible',
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  KEY `fk_articulo_categoria` (`idCategoria`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 -- --------------------------------------------------------
@@ -59,9 +60,10 @@ CREATE TABLE IF NOT EXISTS `categoria` (
 
 DROP TABLE IF EXISTS `compra`;
 CREATE TABLE IF NOT EXISTS `compra` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `total` double NOT NULL,
-  `fecha` date NOT NULL
+  `fecha` date NOT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 -- --------------------------------------------------------
@@ -73,12 +75,15 @@ CREATE TABLE IF NOT EXISTS `compra` (
 DROP TABLE IF EXISTS `lineapedido`;
 CREATE TABLE IF NOT EXISTS `lineapedido` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `dniUsuario` varchar(9) COLLATE utf8_spanish_ci NOT NULL COMMENT 'dni de tabla usuario',
+  `dniUsuario` varchar(9) COLLATE utf8_spanish_ci NOT NULL,
   `idArticulo` int(11) NOT NULL,
   `precio` double NOT NULL,
   `cantidad` int(11) NOT NULL,
-  `id_compra` int(11) NOT NULL COMMENT 'id de tabla compra',
-  PRIMARY KEY (`id`)
+  `idCompra` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `dniUsuario` (`dniUsuario`),
+  KEY `idArticulo` (`idArticulo`),
+  KEY `idCompra` (`idCompra`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 -- --------------------------------------------------------
@@ -112,7 +117,25 @@ CREATE TABLE IF NOT EXISTS `usuario` (
 
 INSERT INTO `usuario` (`dni`, `nombre`, `apellido`, `email`, `password`, `descripcion`, `direccion`, `municipio`, `provincia`, `pais`, `codigopostal`, `telefono`, `imagen`, `rol`) VALUES
 ('0', 'asd', 'diosito', 'admin@asd.com', 'asd', 'Mafioso de los dados. Buenos dias', 'el pozo', 'desgraciado', 'Bello', 'olimpo', '66666', '000000000', NULL, 1),
-('1', 'admin', 'armin', 'admin@admin.com', 'admin', 'Criador de Dados', 'mikasa', 'muro maria', 'paradis', 'eldia', '00000', '000000000', NULL, 0);
+('1', 'admin', 'armin', 'admin@admin.com', 'admin', 'Criador de Dados', 'mihogarcito', 'muro maria', 'paradis', 'eldia', '00000', '000000000', NULL, 0);
+
+--
+-- Restricciones para tablas volcadas
+--
+
+--
+-- Filtros para la tabla `articulo`
+--
+ALTER TABLE `articulo`
+  ADD CONSTRAINT `fk_articulo_categoria` FOREIGN KEY (`idCategoria`) REFERENCES `categoria` (`id`);
+
+--
+-- Filtros para la tabla `lineapedido`
+--
+ALTER TABLE `lineapedido`
+  ADD CONSTRAINT `lineapedido_ibfk_1` FOREIGN KEY (`dniUsuario`) REFERENCES `usuario` (`dni`),
+  ADD CONSTRAINT `lineapedido_ibfk_3` FOREIGN KEY (`idCompra`) REFERENCES `compra` (`id`),
+  ADD CONSTRAINT `lineapedido_ibfk_2` FOREIGN KEY (`idArticulo`) REFERENCES `articulo` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
