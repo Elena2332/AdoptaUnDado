@@ -18,7 +18,7 @@
 	                <form action="" method="post" class="row g-3">
 	                    <div class="offset-1 col-8 w-75">
 	                        <label for="email" class="form-label">Correo electrónico</label>
-	                        <input type="text" name="email" id="email" class="form-control">
+	                        <input type="email" name="email" id="email" class="form-control">
 	                    </div>
 	
 	                    <div class="offset-1 col-8 w-75">
