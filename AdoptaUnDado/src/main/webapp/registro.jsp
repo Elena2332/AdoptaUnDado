@@ -18,7 +18,7 @@
 	                <input type="file" name="imagen" id="imagen">
 	            </div>
 	            <div class="formulario col-12 col-md-9 my-3">
-	                <form action="" method="post" class="row g-3">
+	                <form action="ServletRegistro" method="post" class="row g-3">
 	                    <div class="parte1 col-12 col-md-6 px-3">
 	                        <div class="mb-3 row">
 	                            <label for="nombre" class="col-12 col-md-2 col-form-label">Nombre:</label>
