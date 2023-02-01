@@ -37,7 +37,7 @@
 	            </div>
 	
 	            <div class="registro bg-white border border-secondary my-5 py-3">
-	                <p class="text-center">¿No tienes una cuenta? <a href="">Regístrate</a></p>
+	                <p class="text-center">¿No tienes una cuenta? <a href="registro.jsp">Regístrate</a></p>
 	            </div>
 	        </div>
 	    </div>
