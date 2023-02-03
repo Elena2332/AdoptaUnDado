@@ -20,16 +20,15 @@ public class CategoriaDAO {
 
 		try {
 			Connection con = ds.getConnection();
-			String sql = "SELECT dni, nombre, apellido, password FROM usuario";
+			String sql = "SELECT id, nombre FROM categoria";
 			Statement st = con.createStatement();
 
 			ResultSet rs = st.executeQuery(sql);
 
 			while (rs.next()) {
-				Usuario usu = new Usuario(rs.getString("dni"), rs.getString("nombre"), rs.getString("apellido"),
-						rs.getString("password"));
+				Categoria cat = new Categoria(rs.getInt("id"), rs.getString("nombre"));
 
-				arrUsuarios.add(usu);
+				arrCategoria.add(cat);
 			}
 
 		} catch (SQLException e) {
@@ -37,25 +36,24 @@ public class CategoriaDAO {
 			e.printStackTrace();
 		}
 
-		return arrUsuarios;
+		return arrCategoria;
 	}
 
-	// Método para coger todos los usuarios
-	public static Usuario getUsuario(DataSource ds, String dni) {
+	// Método para coger una categoria
+	public static Categoria getCategoria(DataSource ds, int id) {
 
-		Usuario usuario = null;
+		Categoria cat = null;
 
 		try {
 			Connection con = ds.getConnection();
-			String sql = "SELECT dni, nombre, apellido, password FROM usuario where dni = ?";
+			String sql = "SELECT id, nombre FROM categoria where id = ?";
 			PreparedStatement st = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-			st.setString(1, dni);
+			st.setInt(1, id);
 
 			ResultSet rs = st.executeQuery(sql);
 
 			if (rs.next()) {
-				usuario = new Usuario(rs.getString("dni"), rs.getString("nombre"), rs.getString("apellido"),
-						rs.getString("password"));
+				cat = new Categoria(rs.getInt("id"), rs.getString("nombre"));
 
 			}
 
@@ -64,35 +62,34 @@ public class CategoriaDAO {
 			e.printStackTrace();
 		}
 
-		return usuario;
+		return cat;
 	}
 
-	// Método para coger todos los usuarios
-//		public static boolean insertUsuario(DataSource ds, Usuario usu) {
-	//
-	//
-//			try {
-//				Connection con = ds.getConnection();
-//				String sql = "INSERT INTO usuario(`dni`, `nombre`, `apellido`, `email`, `password`, `descripcion`, `direccion`, `municipio`, `provincia`, `pais`, `codigopostal`, `telefono`, `imagen`, `rol`)"
-//						+ " VALUES  (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-//				PreparedStatement st = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-//				st.setString(1, dni);
-	//
-//				ResultSet rs = st.executeQuery(sql);
-	//
-//				if (rs.next()) {
-//					usuario = new Usuario(rs.getString("dni"), rs.getString("nombre"), rs.getString("apellido"),
-//							rs.getString("password"));
-	//
-//				}
-	//
-//			} catch (SQLException e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			}
-	//
-//			return usuario;
-//		}
+	// Método para insertar categoria
+		public static boolean insertCategoria(DataSource ds, Categoria cat) {
+	
+			try {
+				Connection con = ds.getConnection();
+				String sql = "INSERT INTO Categoria (id, nombre)"
+						+ " VALUES  (?,?)";
+				PreparedStatement st = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+				st.setInt(1, cat.getId());
+				st.setString(2, cat.getNombre());
+	
+				ResultSet rs = st.executeQuery(sql);
+				st.execute();
+
+				st.close();
+				con.close();
+				return true;
+	
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+	
+			return false;
+		}
 
 	public static boolean deleteUsuario(DataSource ds, String dni) {
 		try {
