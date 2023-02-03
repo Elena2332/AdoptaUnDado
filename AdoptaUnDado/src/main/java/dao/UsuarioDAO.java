@@ -117,4 +117,31 @@ public class UsuarioDAO {
 		return false;
 	}
 
+	//Método para comprobar si existe el usuario al loguearse
+	public static boolean comprobarUsuario(DataSource ds, String email, String pass) {
+		
+		boolean existeUsuario = false;
+		
+		try {
+			Connection con = ds.getConnection();
+			String sql ="SELECT email, password FROM usuario";
+			Statement st = con.createStatement();
+			
+			ResultSet rs = st.executeQuery(sql);
+			
+			while(rs.next()) {
+				
+				if (rs.getString("email").equals(email) && rs.getString("password").equals(pass)) {
+					existeUsuario = true;
+				}
+				
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return existeUsuario;
+		
+	}
+
 }

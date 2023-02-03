@@ -1,11 +1,18 @@
 package servlets;
 
 import java.io.IOException;
+
+import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import javax.sql.DataSource;
+
+import conex.ConnectionPoolDB;
+import dao.UsuarioDAO;
 
 /**
  * Servlet implementation class ServletLogin
@@ -14,28 +21,47 @@ import javax.servlet.http.HttpServletResponse;
 public class ServletLogin extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public ServletLogin() {
-        super();
-        // TODO Auto-generated constructor stub
+    DataSource ds;
+    
+    public void init(ServletConfig config) throws ServletException {
+    	super.init(config);
+    	ds = ConnectionPoolDB.getDataSource();
     }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		// doGet(request, response);
+		
+		String correo = "";
+		String pass = "";
+		
+		//Se pincha en el botón ENTRAR
+		if (request.getParameter("entrar") != null) {
+			
+			//Comprobación de campos vacíos
+			if (request.getParameter("email").equals("") || request.getParameter("password").equals("")) {
+				response.sendRedirect("login.jsp");
+			} else {
+				
+				correo = request.getParameter("email");
+				pass = request.getParameter("password");
+				
+				//Comprobación de datos del usuario
+				boolean existeUsuario = UsuarioDAO.comprobarUsuario(ds, correo, pass);
+				System.out.println(existeUsuario);
+				
+			}
+			
+		}
+		
 	}
 
 }
