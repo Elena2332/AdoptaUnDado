@@ -19,7 +19,6 @@ public class ConnectionPoolDB {
 
 			} catch (NamingException e) {
 				e.printStackTrace();
-
 			}
 		}
 

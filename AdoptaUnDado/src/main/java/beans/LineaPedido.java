@@ -1,7 +1,6 @@
 package beans;
 
 public class LineaPedido {
-
 	private int id, id_articulo, id_compra, cantidad;
 	private double precio;
 	private String dni_usuario;

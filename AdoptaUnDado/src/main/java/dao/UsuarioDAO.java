@@ -6,19 +6,23 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+import javax.sql.DataSource;
+
 import beans.Usuario;
 import conex.ConnectionPoolDB;
 
 public class UsuarioDAO {
 	
 	
+	
+	
 	//Método para coger todos los usuarios
-	public static ArrayList<Usuario> getAllUsuarios () {
+	public static ArrayList<Usuario> getAllUsuarios (DataSource ds) {
 		
 		ArrayList<Usuario> arrUsuarios= new ArrayList<Usuario>();
 		
 		try {
-			Connection con= ConnectionPoolDB.getDataSource().getConnection();
+			Connection con= ds.getConnection();
 			String sql="SELECT dni, nombre, apellido, password FROM usuario";
 			Statement st= con.createStatement();
 	

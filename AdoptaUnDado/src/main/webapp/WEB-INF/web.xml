@@ -5,13 +5,17 @@
 	id="WebApp_ID" version="4.0">
 	<display-name>AdoptaUnDado</display-name>
 	<welcome-file-list>
-		<welcome-file>index.html</welcome-file>
 		<welcome-file>index.jsp</welcome-file>
-		<welcome-file>index.htm</welcome-file>
-		<welcome-file>default.html</welcome-file>
-		<welcome-file>default.jsp</welcome-file>
-		<welcome-file>default.htm</welcome-file>
 	</welcome-file-list>
+	<servlet>
+		<servlet-name>ServletPrueba</servlet-name>
+		<servlet-class>servlets.ServletPrueba</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ServletPrueba</servlet-name>
+		<url-pattern>/ServletPrueba</url-pattern>
+	</servlet-mapping>
+	
 	<resource-ref>
 		<description>DB Connection</description>
 		<res-ref-name>jdbc/poolDadosDB</res-ref-name>
