@@ -11,6 +11,9 @@
 	<c:if test="${listaUsu == null}">
 		<jsp:forward page="ServletPrueba"></jsp:forward>
 	</c:if>
+	
+	<jsp:include page="menu.jsp"></jsp:include>
+	
 	<ul>
 	<c:forEach items="${listaUsu}" var="usu">
 					<li>${usu.nombre}</li>

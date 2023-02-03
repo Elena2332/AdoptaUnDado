@@ -11,9 +11,18 @@
 		<servlet-name>ServletPrueba</servlet-name>
 		<servlet-class>servlets.ServletPrueba</servlet-class>
 	</servlet>
+	<servlet>
+		<servlet-name>ServletIndex</servlet-name>
+		<servlet-class>servlets.ServletIndex</servlet-class>
+	</servlet>
+	
 	<servlet-mapping>
 		<servlet-name>ServletPrueba</servlet-name>
 		<url-pattern>/ServletPrueba</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ServletIndex</servlet-name>
+		<url-pattern>/ServletIndex</url-pattern>
 	</servlet-mapping>
 	
 	<resource-ref>
