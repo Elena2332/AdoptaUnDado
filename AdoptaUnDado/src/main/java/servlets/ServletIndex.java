@@ -58,7 +58,7 @@ public class ServletIndex extends HttpServlet {
 		
 		//SESSION
 		HttpSession session = request.getSession(false);
-		if(session == null)  //no hay session
+		if(session == null || session.getAttribute("usuario") == null)  //no hay session
 		{
 			session = request.getSession(true);   //iniciar session
 			Usuario usu = new Usuario();
