@@ -70,7 +70,7 @@ public class CategoriaDAO {
 	
 			try {
 				Connection con = ds.getConnection();
-				String sql = "INSERT INTO Categoria (id, nombre)"
+				String sql = "INSERT INTO categoria (id, nombre)"
 						+ " VALUES  (?,?)";
 				PreparedStatement st = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 				st.setInt(1, cat.getId());
