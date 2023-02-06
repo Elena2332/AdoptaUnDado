@@ -5,7 +5,7 @@ public class LineaPedido {
 	private double precio;
 	private String dni_usuario;
 	
-	public LineaPedido(int id, int id_articulo, int id_compra, int cantidad, double precio, String dni_usuario) {
+	public LineaPedido(int id,String dni_usuario, int id_articulo,double precio, int cantidad, int id_compra) {
 		this.id = id;
 		this.id_articulo = id_articulo;
 		this.id_compra = id_compra;
@@ -14,7 +14,7 @@ public class LineaPedido {
 		this.dni_usuario = dni_usuario;
 	}
 
-	public LineaPedido(int id, int id_articulo, int cantidad, double precio, String dni_usuario) {
+	public LineaPedido(int id,String dni_usuario, int id_articulo,double precio, int cantidad) {
 		this.id = id;
 		this.id_articulo = id_articulo;
 		this.cantidad = cantidad;

@@ -9,26 +9,25 @@ import java.util.ArrayList;
 
 import javax.sql.DataSource;
 
-import beans.Categoria;
-import beans.Usuario;
+import beans.LineaPedido;
 
-public class CategoriaDAO {
-	// Método para coger todos las categorias
-	public static ArrayList<Categoria> getAllCategorias(DataSource ds) {
+public class LineaPedidoDAO {
+	public static ArrayList<LineaPedido> getAllCategorias(DataSource ds) {
 
-		ArrayList<Categoria> arrCategoria = new ArrayList<Categoria>();
+		ArrayList<LineaPedido> arrLineaPedido = new ArrayList<LineaPedido>();
 
 		try {
 			Connection con = ds.getConnection();
-			String sql = "SELECT id, nombre FROM categoria";
+			String sql = "SELECT id, usuario, articulo, precio, cantidad, id_compra FROM lineapedido";
 			Statement st = con.createStatement();
 
 			ResultSet rs = st.executeQuery(sql);
 
 			while (rs.next()) {
-				Categoria cat = new Categoria(rs.getInt("id"), rs.getString("nombre"));
+				LineaPedido lp = new LineaPedido(rs.getInt("id"), rs.getString("usuario"),rs.getInt("articulo"), rs.getDouble("precio"),
+						rs.getInt("cantidad"), rs.getInt("id_compra"));
 
-				arrCategoria.add(cat);
+				arrLineaPedido.add(lp);
 			}
 
 		} catch (SQLException e) {
@@ -36,24 +35,25 @@ public class CategoriaDAO {
 			e.printStackTrace();
 		}
 
-		return arrCategoria;
+		return arrLineaPedido;
 	}
 
 	// Método para coger una categoria
-	public static Categoria getCategoria(DataSource ds, int id) {
+	public static LineaPedido getLineaPedido(DataSource ds, int id) {
 
-		Categoria cat = null;
+		LineaPedido lp = null;
 
 		try {
 			Connection con = ds.getConnection();
-			String sql = "SELECT id, nombre FROM categoria where id = ?";
+			String sql = "SELECT id, usuario, articulo, precio, cantidad, id_compra FROM lineapedido where id = ?";
 			PreparedStatement st = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 			st.setInt(1, id);
 
 			ResultSet rs = st.executeQuery(sql);
 
 			if (rs.next()) {
-				cat = new Categoria(rs.getInt("id"), rs.getString("nombre"));
+				lp = new LineaPedido(rs.getInt("id"), rs.getString("usuario"),rs.getInt("articulo"), rs.getDouble("precio"),
+						rs.getInt("cantidad"), rs.getInt("id_compra"));
 
 			}
 
@@ -62,19 +62,23 @@ public class CategoriaDAO {
 			e.printStackTrace();
 		}
 
-		return cat;
+		return lp;
 	}
 
 	// Método para insertar categoria
-		public static boolean insertCategoria(DataSource ds, Categoria cat) {
+		public static boolean insertLineaPedido(DataSource ds, LineaPedido lp) {
 	
 			try {
 				Connection con = ds.getConnection();
-				String sql = "INSERT INTO Categoria (id, nombre)"
-						+ " VALUES  (?,?)";
+				String sql = "INSERT INTO lineapedido (id, usuario, articulo, precio, cantidad, id_compra)"
+						+ " VALUES  (?,?,?,?,?,?)";
 				PreparedStatement st = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-				st.setInt(1, cat.getId());
-				st.setString(2, cat.getNombre());
+				st.setInt(1, lp.getId());
+				st.setString(2, lp.getDni_usuario());
+				st.setInt(3, lp.getId_articulo());
+				st.setDouble(4, lp.getPrecio());
+				st.setInt(5, lp.getCantidad());
+				st.setInt(6, lp.getId_compra());
 	
 				ResultSet rs = st.executeQuery(sql);
 				st.execute();
@@ -91,10 +95,10 @@ public class CategoriaDAO {
 			return false;
 		}
 
-	public static boolean deleteCategoria(DataSource ds, int id) {
+	public static boolean deleteLineaPedido(DataSource ds, int id) {
 		try {
 			Connection con = ds.getConnection();
-			String sql = "DELETE FROM categoria where id = ?";
+			String sql = "DELETE FROM lineapedido where id = ?";
 
 			PreparedStatement st = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 			st.setInt(1, id);

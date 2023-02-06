@@ -8,13 +8,22 @@ public class Articulo {
 	private double precio;
 	private String imagen;   //Blob
 	
-	public Articulo(int id, int id_categoria, int stock, String nombre, double precio, String imagen) {
+	public Articulo(int id,String nombre, int id_categoria, double precio, String imagen, int stock) {
 		this.id = id;
 		this.id_categoria = id_categoria;
 		this.stock = stock;
 		this.nombre = nombre;
 		this.precio = precio;
 		this.imagen = imagen;
+	}
+	
+	public Articulo(int id,String nombre, int id_categoria, double precio, int stock) {
+		this.id = id;
+		this.id_categoria = id_categoria;
+		this.stock = stock;
+		this.nombre = nombre;
+		this.precio = precio;
+		this.imagen = "";
 	}
 	
 	public Articulo()  
