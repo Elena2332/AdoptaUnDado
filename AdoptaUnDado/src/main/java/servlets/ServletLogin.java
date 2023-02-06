@@ -56,7 +56,14 @@ public class ServletLogin extends HttpServlet {
 				
 				//Comprobación de datos del usuario
 				boolean existeUsuario = UsuarioDAO.comprobarUsuario(ds, correo, pass);
-				System.out.println(existeUsuario);
+				
+				if (existeUsuario) {
+					//Faltaría meter al usuario en la sesión
+					response.sendRedirect("index.jsp");
+				} else {
+					//Falataría mandar un mensaje de error
+					response.sendRedirect("login.jsp");
+				}
 				
 			}
 			
