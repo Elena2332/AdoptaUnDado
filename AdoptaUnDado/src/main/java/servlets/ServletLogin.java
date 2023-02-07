@@ -1,6 +1,7 @@
 package servlets;
 
 import java.io.IOException;
+import java.net.http.HttpClient;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
@@ -58,11 +59,14 @@ public class ServletLogin extends HttpServlet {
 				boolean existeUsuario = UsuarioDAO.comprobarUsuario(ds, correo, pass);
 				
 				if (existeUsuario) {
-					//Faltaría meter al usuario en la sesión
-					response.sendRedirect("index.jsp");
+					//Si existe usuario, se guarda su dni en la sesión y se redirige a index.jsp
+					HttpSession session = request.getSession(true);
+					session.setAttribute("dniUsuario", UsuarioDAO.sacarDniUsuario(ds, correo));
+					request.getRequestDispatcher("index.jsp").forward(request, response);
 				} else {
-					//Falataría mandar un mensaje de error
-					response.sendRedirect("login.jsp");
+					//Si no existe usuario, se redirige a login.jsp con un mensaje de error
+					request.setAttribute("mensajeError", "Usuario no encontrado!");
+					request.getRequestDispatcher("login.jsp").forward(request, response);
 				}
 				
 			}
