@@ -7,9 +7,10 @@ public class Usuario {
 	private String email, telefono;
 	private String imagen;
 	private int rol;  // 0:=admin, 1:=usuario
+	private int verificado; // 0:= sin verificar,  1:= verificado
 	
 	public Usuario(String dni, String nombre, String apellido, String password, String descripcion, String direccion,
-			String municipio, String provincia, String pais, String codigopostal, String email, String telefono, String imagen, int rol) 
+			String municipio, String provincia, String pais, String codigopostal, String email, String telefono, String imagen, int rol, int ver) 
 	{
 		this.dni = dni;
 		this.nombre = nombre;
@@ -25,6 +26,7 @@ public class Usuario {
 		this.telefono = telefono;
 		this.imagen = imagen;
 		this.rol = rol;
+		this.verificado = ver;
 	}
 	
 	public Usuario(String dni, String nombre, String apellido, String password) {
