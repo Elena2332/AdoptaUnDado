@@ -30,12 +30,12 @@
 	                <form action="ServletLogin" method="post" class="row g-3">
 	                    <div class="offset-1 col-8 w-75">
 	                        <label for="email" class="form-label">Correo electrónico</label>
-	                        <input type="email" name="email" id="email" class="form-control">
+	                        <input type="email" name="email" id="email" class="form-control" placeholder="example@gmail.com">
 	                    </div>
 	
 	                    <div class="offset-1 col-8 w-75">
 	                        <label for="password" class="form-label">Contraseña</label>
-	                        <input type="password" name="password" id="password" class="form-control">
+	                        <input type="password" name="password" id="password" class="form-control" placeholder="Introduce tu contraseña">
 	                    </div>
 	
 	                    <div class="col-12">
