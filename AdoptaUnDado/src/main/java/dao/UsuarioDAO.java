@@ -143,5 +143,31 @@ public class UsuarioDAO {
 		return existeUsuario;
 		
 	}
+	
+	//Método para sacar el dni del usuario
+	public static String sacarDniUsuario(DataSource ds, String email) {
+		String dniUsuario = "";
+		
+		try {
+			Connection con = ds.getConnection();
+            String sql = "SELECT dni FROM usuario where email = ?";
+            
+            PreparedStatement st = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            st.setString(1, email);
+
+            
+            ResultSet rs = st.executeQuery();
+			
+			if(rs.next()) {
+				
+				dniUsuario = rs.getString("dni");
+				
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return dniUsuario;
+	}
 
 }
