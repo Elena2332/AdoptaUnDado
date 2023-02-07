@@ -15,6 +15,10 @@
 		<servlet-name>ServletIndex</servlet-name>
 		<servlet-class>servlets.ServletIndex</servlet-class>
 	</servlet>
+	<servlet>
+		<servlet-name>ServletNosotros</servlet-name>
+		<servlet-class>servlets.ServletNosotros</servlet-class>
+	</servlet>
 	
 	<servlet-mapping>
 		<servlet-name>ServletPrueba</servlet-name>
@@ -23,6 +27,10 @@
 	<servlet-mapping>
 		<servlet-name>ServletIndex</servlet-name>
 		<url-pattern>/ServletIndex</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ServletNosotros</servlet-name>
+		<url-pattern>/ServletNosotros</url-pattern>
 	</servlet-mapping>
 	
 	<resource-ref>
