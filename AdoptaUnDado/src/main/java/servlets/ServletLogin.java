@@ -1,7 +1,6 @@
 package servlets;
 
 import java.io.IOException;
-import java.net.http.HttpClient;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
@@ -33,6 +32,12 @@ public class ServletLogin extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	
+		if (request.getParameter("olvidar") != null) {
+			
+			
+		}
+		
 	}
 
 	/**
