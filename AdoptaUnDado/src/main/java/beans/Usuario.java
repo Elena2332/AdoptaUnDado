@@ -164,8 +164,13 @@ public class Usuario {
 	public void setImagen(String imagen) {
 		this.imagen = imagen;
 	}
-	
-	
-	
+
+	public int getVerificado() {
+		return verificado;
+	}
+
+	public void setVerificado(int verificado) {
+		this.verificado = verificado;
+	}
 	
 }

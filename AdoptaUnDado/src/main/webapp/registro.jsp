@@ -1,3 +1,4 @@
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -15,58 +16,72 @@
 	        <div class="m-auto bg-white border border-secondary mx-3 my-5 p-3 row">
 	            <div class="col-12 col-md-3">
 	                <img src="" alt="">
-	                <input type="file" name="imagen" id="imagen">
+	                <input accept="image/*" type="file" name="imagen" id="imagen">
 	            </div>
 	            <div class="formulario col-12 col-md-9 my-3">
+	            	<p>
+	            		<%
+	            			if (request.getParameter("entrarRegistro") != null) {
+	            				out.print(request.getAttribute("mensajeErrorRegistro"));
+	            			}
+	            		%>
+	            	</p>
 	                <form action="ServletRegistro" method="post" class="row g-3">
 	                    <div class="parte1 col-12 col-md-6 px-3">
+	                    	<div class="mb-3 row">
+	                            <label for="dni" class="col-12 col-md-2 form-label">DNI:</label>
+	                            <div class="col-10">
+	                                <input type="text" name="dni" id="dni" class="form-control" placeholder="Introduce el DNI" required>
+	                            </div>
+	                        </div>
+	                        
 	                        <div class="mb-3 row">
 	                            <label for="nombre" class="col-12 col-md-2 col-form-label">Nombre:</label>
 	                            <div class="col-10">
-	                                <input type="text" name="nombre" id="nombre" class="form-control" required>
+	                                <input type="text" name="nombre" id="nombre" class="form-control" placeholder="Introduce tu nombre" required>
 	                            </div>
 	                        </div>
 	    
 	                        <div class="mb-3 row">
 	                            <label for="apellidos" class="col-12 col-md-2 form-label">Apellidos:</label>
 	                            <div class="col-10">
-	                                <input type="text" name="apellidos" id="apellidos" class="form-control" required>
+	                                <input type="text" name="apellidos" id="apellidos" class="form-control" placeholder="Introduce tus apellidos" required>
 	                            </div>
 	                        </div>
 	    
 	                        <div class="mb-3 row">
 	                            <label for="descripcion" class="col-12 col-md-2 form-label">Descripción:</label>
 	                            <div class="col-10 offset-md-1 col-md-9">
-	                                <textarea class="form-control" id="descripcion" rows="3" name="descripcion"></textarea>
+	                                <textarea class="form-control" id="descripcion" rows="3" name="descripcion" placeholder="Escribe una pequeña descripción..."></textarea>
 	                            </div>
 	                        </div>
 	    
 	                        <div class="mb-3 row">
 	                            <label for="direccion" class="col-12 col-md-2 form-label">Dirección:</label>
 	                            <div class="col-10">
-	                                <input type="text" name="direccion" id="direccion" class="form-control" required>
+	                                <input type="text" name="direccion" id="direccion" class="form-control"  placeholder="Introduce una dirección" required>
 	                            </div>
 	                        </div>
 	    
 	                        <div class="mb-3 row">
 	                            <label for="cp" class="col-12 col-md-2 form-label">Código Postal:</label>
 	                            <div class="col-10">
-	                                <input type="text" name="cp" id="cp" class="form-control" required>
-	                            </div>
-	                        </div>
-	    
-	                        <div class="mb-3 row">
-	                            <label for="municipio" class="col-12 col-md-2 form-label">Municipio:</label>
-	                            <div class="col-10">
-	                                <input type="text" name="municipio" id="municipio" class="form-control" required>
+	                                <input type="text" name="cp" id="cp" class="form-control"  placeholder="Introduce código postal" required>
 	                            </div>
 	                        </div>
 	                    </div>
 	                    <div class="parte2 col-12 col-md-6 px-3">
+	                    	<div class="mb-3 row">
+	                            <label for="provincia" class="col-12 col-md-2 form-label">Provincia:</label>
+	                            <div class="col-10">
+	                                <input type="text" name="provincia" id="provincia" class="form-control" placeholder="Introduce una provincia" required>
+	                            </div>
+	                        </div>
+	                        
 	                        <div class="mb-3 row">
 	                            <label for="ciudad" class="col-12 col-md-2 form-label">Ciudad:</label>
 	                            <div class="col-10">
-	                                <input type="text" name="ciudad" id="ciudad" class="form-control" required>
+	                                <input type="text" name="ciudad" id="ciudad" class="form-control" placeholder="Introduce una ciudad" required>
 	                            </div>
 	                        </div>
 	    
@@ -84,27 +99,27 @@
 	                        <div class="mb-3 row">
 	                            <label for="email" class="col-12 col-md-2 form-label">Email:</label>
 	                            <div class="col-10">
-	                                <input type="email" name="email" id="email" class="form-control" required>
+	                                <input type="email" name="email" id="email" class="form-control" placeholder="example@gmail.com" required>
 	                            </div>
 	                        </div>
 	    
 	                        <div class="mb-3 row">
 	                            <label for="password" class="col-12 col-md-2 form-label">Contraseña:</label>
 	                            <div class="col-10 offset-md-1 col-md-9">
-	                                <input type="password" name="password" id="password" class="form-control" required>
+	                                <input type="password" name="password" id="password" class="form-control" placeholder="Introduce una contraseña" required>
 	                            </div>
 	                        </div>
 	    
 	                        <div class="mb-3 row">
 	                            <label for="telefono" class="col-12 col-md-2 form-label">Teléfono:</label>
 	                            <div class="col-10">
-	                                <input type="text" name="telefono" id="telefono" class="form-control" required>
+	                                <input type="text" name="telefono" id="telefono" class="form-control" placeholder="Introduce un número de teléfono" required>
 	                            </div>
 	                        </div>
 	                    </div>
 	
 	                    <div class="col-12 text-center">
-	                        <button type="submit" name="entrar" class="btn btn-primary">ENTRAR</button>
+	                        <button type="submit" name="entrarRegistro" class="btn btn-primary">ENTRAR</button>
 	                    </div>
 	                </form>
 	            </div>
