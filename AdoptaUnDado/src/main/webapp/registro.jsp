@@ -16,7 +16,7 @@
 	        <div class="m-auto bg-white border border-secondary mx-3 my-5 p-3 row">
 	            <div class="col-12 col-md-3">
 	                <img src="" alt="">
-	                <input type="file" name="imagen" id="imagen">
+	                <input accept="image/*" type="file" name="imagen" id="imagen">
 	            </div>
 	            <div class="formulario col-12 col-md-9 my-3">
 	            	<p>
