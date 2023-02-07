@@ -16,11 +16,17 @@
 	        <div class="w-75 m-auto">
 	            <div class="formulario bg-white border border-secondary my-5 p-3">
 	                <img src="" alt="" class=""><p>Logotipo</p>
-	                <%
-	                	if (request.getParameter("entrar") != null) {
-	                		out.print(request.getAttribute("mensajeError"));
-	                	}
-	                %>
+	                <p>
+		                <%
+		                	if (request.getParameter("entrarLogin") != null) {
+		                		out.print(request.getAttribute("mensajeError"));
+		                	}
+		                
+		                	if (request.getParameter("entrarRegistro") != null) {
+		                		out.print(request.getAttribute("mensajeVerificado"));
+		                	}
+		                %>
+		            </p>
 	                <form action="ServletLogin" method="post" class="row g-3">
 	                    <div class="offset-1 col-8 w-75">
 	                        <label for="email" class="form-label">Correo electrónico</label>
@@ -37,7 +43,7 @@
 	                    </div>
 	
 	                    <div class="col-12 text-center">
-	                        <button type="submit" name="entrar" class="btn btn-primary">ENTRAR</button>
+	                        <button type="submit" name="entrarLogin" class="btn btn-primary">ENTRAR</button>
 	                    </div>
 	                </form>
 	            </div>
