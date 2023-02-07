@@ -124,14 +124,14 @@ public class UsuarioDAO {
 		
 		try {
 			Connection con = ds.getConnection();
-			String sql ="SELECT email, password FROM usuario";
+			String sql ="SELECT email, password, verificado FROM usuario";
 			Statement st = con.createStatement();
 			
 			ResultSet rs = st.executeQuery(sql);
 			
 			while(rs.next()) {
 				
-				if (rs.getString("email").equals(email) && rs.getString("password").equals(pass)) {
+				if (rs.getString("email").equals(email) && rs.getString("password").equals(pass) && rs.getInt("verificado") == 1) {
 					existeUsuario = true;
 				}
 				
@@ -197,6 +197,7 @@ public class UsuarioDAO {
 		
 	}
 	
+	//Método para insertar usuario
 	public static boolean inserartUsuario(DataSource ds, Usuario usu) {
 
 		try {
