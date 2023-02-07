@@ -31,9 +31,9 @@
 	                		<!-- usuario registrado -->
 				            <li class="list-group-item border-0 col-2" role="button" data-bs-toggle="dropdown" aria-expanded="false"><img src="" alt="usuario"></li>
 				            <ul class="dropdown-menu">
-				                <li class="list-group-item ><a href="carrito.jsp">Mi carrito</a></li>
-				                <li class="list-group-item ><a href="perfil.jsp">Mi Perfil</a></li>
-				                <li class="list-group-item ><a href="historial.jsp">Mi Historial</a></li>
+				                <li class="list-group-item" ><a href="carrito.jsp">Mi carrito</a></li>
+				                <li class="list-group-item" ><a href="perfil.jsp">Mi Perfil</a></li>
+				                <li class="list-group-item" ><a href="historial.jsp">Mi Historial</a></li>
 				            </ul>
 						</c:otherwise>
                		</c:choose>
