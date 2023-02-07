@@ -40,7 +40,7 @@
 	                    </div>
 	
 	                    <div class="col-12">
-	                        <p class="offset-4 col-6 text-end"><a href="">¿Olvidaste la contraseña?</a></p>
+	                        <p class="offset-4 col-6 text-end"><a href="ServletLogin?olvidar=true">¿Olvidaste la contraseña?</a></p>
 	                    </div>
 	
 	                    <div class="col-12 text-center">
