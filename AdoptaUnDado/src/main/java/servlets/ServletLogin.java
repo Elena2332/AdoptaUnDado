@@ -45,7 +45,7 @@ public class ServletLogin extends HttpServlet {
 		String pass = "";
 		
 		//Se pincha en el botón ENTRAR
-		if (request.getParameter("entrar") != null) {
+		if (request.getParameter("entrarLogin") != null) {
 			
 			//Comprobación de campos vacíos
 			if (request.getParameter("email").equals("") || request.getParameter("password").equals("")) {
@@ -64,8 +64,8 @@ public class ServletLogin extends HttpServlet {
 					session.setAttribute("dniUsuario", UsuarioDAO.sacarDniUsuario(ds, correo));
 					request.getRequestDispatcher("index.jsp").forward(request, response);
 				} else {
-					//Si no existe usuario, se redirige a login.jsp con un mensaje de error
-					request.setAttribute("mensajeError", "Usuario no encontrado!");
+					//Si no existe usuario o no está verificado, se redirige a login.jsp con un mensaje de error
+					request.setAttribute("mensajeError", "Usuario no encontrado/verificado!");
 					request.getRequestDispatcher("login.jsp").forward(request, response);
 				}
 				
