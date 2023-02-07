@@ -169,5 +169,69 @@ public class UsuarioDAO {
 		
 		return dniUsuario;
 	}
+	
+	//Método para comprobar si el usuario a registrar ya existe
+	public static boolean existeUsuario(DataSource ds, String email) {
+		
+		boolean existeUsuario = false;
+		
+		try {
+			Connection con = ds.getConnection();
+			String sql ="SELECT email FROM usuario";
+			Statement st = con.createStatement();
+			
+			ResultSet rs = st.executeQuery(sql);
+			
+			while(rs.next()) {
+				
+				if (rs.getString("email").equals(email)) {
+					existeUsuario = true;
+				}
+				
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return existeUsuario;
+		
+	}
+	
+	public static boolean inserartUsuario(DataSource ds, Usuario usu) {
+
+		try {
+			Connection con = ds.getConnection();
+			String sql = "INSERT INTO usuario(dni, nombre, apellido, email, password, descripcion, direccion, municipio, provincia, pais, codigopostal, telefono, imagen, rol, verificado)"
+					+ " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+			PreparedStatement st = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+			st.setString(1, usu.getDni());
+			st.setString(2, usu.getNombre());
+			st.setString(3, usu.getApellido());
+			st.setString(4, usu.getEmail());
+			st.setString(5, usu.getPassword());
+			st.setString(6, usu.getDescripcion());
+			st.setString(7, usu.getDireccion());
+			st.setString(8, usu.getMunicipio());
+			st.setString(9, usu.getProvincia());
+			st.setString(10, usu.getPais());
+			st.setString(11, usu.getCodigopostal());
+			st.setString(12, usu.getTelefono());
+			st.setString(13, usu.getImagen());
+			st.setInt(14, usu.getRol());
+			st.setInt(15, usu.getVerificado());
+	
+			st.execute();
+            
+            
+            st.close();
+            con.close();
+            return true;
+	
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return false;
+}
 
 }
