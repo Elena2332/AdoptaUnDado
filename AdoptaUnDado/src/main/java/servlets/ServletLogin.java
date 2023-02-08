@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.sql.DataSource;
 
+import beans.Usuario;
 import conex.ConnectionPoolDB;
 import dao.UsuarioDAO;
 
@@ -64,9 +65,9 @@ public class ServletLogin extends HttpServlet {
 				boolean existeUsuario = UsuarioDAO.comprobarUsuario(ds, correo, pass);
 				
 				if (existeUsuario) {
-					//Si existe usuario, se guarda su dni en la sesión y se redirige a index.jsp
+					//Si existe usuario, se guarda en la sesión y se redirige a index.jsp
 					HttpSession session = request.getSession(true);
-					session.setAttribute("dniUsuario", UsuarioDAO.sacarDniUsuario(ds, correo));
+					session.setAttribute("usuario",UsuarioDAO.getUsuario(ds, UsuarioDAO.sacarDniUsuario(ds, correo)));
 					request.getRequestDispatcher("index.jsp").forward(request, response);
 				} else {
 					//Si no existe usuario o no está verificado, se redirige a login.jsp con un mensaje de error
@@ -77,6 +78,8 @@ public class ServletLogin extends HttpServlet {
 			}
 			
 		}
+		
+		request.getRequestDispatcher("login.jsp").forward(request, response);
 		
 	}
 

@@ -49,10 +49,10 @@ public class UsuarioDAO {
 		try {
 			Connection con = ds.getConnection();
 			String sql = "SELECT dni, nombre, apellido, password FROM usuario where dni = ?";
-			PreparedStatement st = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+			PreparedStatement st = con.prepareStatement(sql);
 			st.setString(1, dni);
 
-			ResultSet rs = st.executeQuery(sql);
+			ResultSet rs = st.executeQuery();
 
 			if (rs.next()) {
 				usuario = new Usuario(rs.getString("dni"), rs.getString("nombre"), rs.getString("apellido"),
@@ -198,7 +198,7 @@ public class UsuarioDAO {
 	}
 	
 	//Método para insertar usuario
-	public static boolean inserartUsuario(DataSource ds, Usuario usu) {
+	public static boolean inserarUsuario(DataSource ds, Usuario usu) {
 
 		try {
 			Connection con = ds.getConnection();

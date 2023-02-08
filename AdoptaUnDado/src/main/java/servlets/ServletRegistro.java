@@ -63,7 +63,7 @@ public class ServletRegistro extends HttpServlet {
 				request.getRequestDispatcher("registro.jsp").forward(request, response);
 			} else {
 				Usuario usuario = new Usuario(dni, nombre, apellidos, pass, descripcion, direccion, provincia, provincia, pais, cp, email, telefono, "", 1, 0);
-				boolean usuarioCreado = UsuarioDAO.inserartUsuario(ds, usuario);
+				boolean usuarioCreado = UsuarioDAO.inserarUsuario(ds, usuario);
 				
 				if (usuarioCreado) {
 					//Faltaría hacer lo del correo de verificación
