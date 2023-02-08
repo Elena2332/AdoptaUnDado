@@ -4,9 +4,9 @@
 
     <nav class="navbar w-100">
         <ul class="list-group list-group-horizontal w-100">
-            <li class="list-group-item border-0 col-2"><a href="index.jsp"><img src="" alt="Logo"></a></li>
-            <li class="list-group-item border-0 col-2"><a href="index.jsp">Inicio</a></li>
-            <li class="list-group-item border-0 col-2"><a href="nosotros.jsp">Nosotros</a></li>
+            <li class="list-group-item border-0 col-2 my-auto"><a href="index.jsp"><img class="logo" src="img/placeholder_logo.jpeg" alt="Logo"></a></li>
+            <li class="list-group-item border-0 col-2 my-auto"><a href="index.jsp">Inicio</a></li>
+            <li class="list-group-item border-0 col-2 my-auto"><a href="nosotros.jsp">Nosotros</a></li>
             <c:choose>
                 <c:when test="${usuario == null}">	
                     <jsp:forward page="ServletIndex"/>
@@ -15,26 +15,27 @@
 					<c:choose>
                 		<c:when test="${usuario.rol < 0}">	  
 	                		<!-- usuario sin registrar -->
-				            <li class="list-group-item border-0 col-6 row">
+				            <li class="list-group-item border-0 col-6 row text-end my-auto">
 								<a class="col-6" href="login.jsp">Login</a>
 								<a class="col-6" href="registro.jsp">Registrar</a>
 							</li>       
                 		</c:when>
                 		<c:otherwise>
-                			<c:if test="${usuario.rol == 0}">
-		                		<!-- admins -->
-					            <li class="list-group-item border-0 col-5 row">
+                			<!-- admins -->
+				            <li class="list-group-item border-0 col-4 row my-auto">
+				            	<c:if test="${usuario.rol == 0}">
 									<a class="col-6" href="proveedores.jsp">Proveedores</a>
 									<a class="col-6" href="administracion.jsp">Administracion</a>
-								</li>
-                			</c:if>
+								</c:if>
+							</li>                			
 	                		<!-- usuario registrado -->
-				            <li class="list-group-item border-0 col-2" role="button" data-bs-toggle="dropdown" aria-expanded="false"><img src="" alt="usuario"></li>
-				            <ul class="dropdown-menu">
-				                <li class="list-group-item" ><a href="carrito.jsp">Mi carrito</a></li>
-				                <li class="list-group-item" ><a href="perfil.jsp">Mi Perfil</a></li>
-				                <li class="list-group-item" ><a href="historial.jsp">Mi Historial</a></li>
-				            </ul>
+				            <li class="list-group-item border-0 col-2 my-auto" role="button" data-bs-toggle="dropdown" aria-expanded="false"><img src="" alt="usuario">
+								<ul class="dropdown-menu">
+									<li class="list-group-item" ><a href="carrito.jsp">Mi carrito</a></li>
+									<li class="list-group-item" ><a href="perfil.jsp">Mi Perfil</a></li>
+									<li class="list-group-item" ><a href="historial.jsp">Mi Historial</a></li>
+								</ul>
+							</li>
 						</c:otherwise>
                		</c:choose>
                 </c:otherwise>
