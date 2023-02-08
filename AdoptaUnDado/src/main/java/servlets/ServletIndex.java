@@ -15,6 +15,7 @@ import javax.servlet.http.HttpSession;
 
 import beans.Usuario;
 import conex.ConnectionPoolDB;
+import dao.ArticuloDAO;
 
 /**
  * Servlet implementation class ServletIndex
@@ -66,8 +67,11 @@ public class ServletIndex extends HttpServlet {
 			session.setAttribute("usuario", usu);
 		}
 		
-		System.out.println(session);
 		//ArrayList<Usuario> listaUsu =  UsuarioDAO.getAllUsuarios(ds);      //daos
+		
+		//ARTICULOS
+		session.setAttribute("articulos", ArticuloDAO.getAllArticulos(ds));     //todos los articulos
+		
 		
 		request.getRequestDispatcher("index.jsp").forward(request, response);
 	}
