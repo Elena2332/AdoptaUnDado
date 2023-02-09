@@ -20,13 +20,13 @@ public class ArticuloDAO {
 
 			try {
 				Connection con = ds.getConnection();
-				String sql = "SELECT id, nombre, categoria, precio, stock FROM articulo";
+				String sql = "SELECT id, nombre, idCategoria, precio, stock FROM articulo";
 				Statement st = con.createStatement();
 
 				ResultSet rs = st.executeQuery(sql);
 
 				while (rs.next()) {
-					Articulo articulo = new Articulo(rs.getInt("id"), rs.getString("nombre"), rs.getInt("categoria"),
+					Articulo articulo = new Articulo(rs.getInt("id"), rs.getString("nombre"), rs.getInt("idCategoria"),
 							rs.getDouble("precio"), rs.getInt("stock"));
 
 					arrArticulo.add(articulo);
@@ -47,14 +47,14 @@ public class ArticuloDAO {
 
 			try {
 				Connection con = ds.getConnection();
-				String sql = "SELECT id, nombre, categoria, precio, stock FROM articulo where id = ?";
+				String sql = "SELECT id, nombre, idCategoria, precio, stock FROM articulo where id = ?";
 				PreparedStatement st = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 				st.setInt(1, id);
 
 				ResultSet rs = st.executeQuery(sql);
 
 				if (rs.next()) {
-					articulo  = new Articulo(rs.getInt("id"), rs.getString("nombre"), rs.getInt("categoria"),
+					articulo  = new Articulo(rs.getInt("id"), rs.getString("nombre"), rs.getInt("idCategoria"),
 							rs.getDouble("precio"), rs.getInt("stock"));
 
 				}
