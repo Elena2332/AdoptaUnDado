@@ -29,7 +29,8 @@
 								</c:if>
 							</li>                			
 	                		<!-- usuario registrado -->
-				            <li class="list-group-item border-0 col-2 my-auto" role="button" data-bs-toggle="dropdown" aria-expanded="false"><img src="" alt="usuario">
+				            <li class="list-group-item border-0 col-2 my-auto" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+				            	<img src="" alt="${usuario.nombre}">
 								<ul class="dropdown-menu">
 									<li class="list-group-item" ><a href="carrito.jsp">Mi carrito</a></li>
 									<li class="list-group-item" ><a href="perfil.jsp">Mi Perfil</a></li>
