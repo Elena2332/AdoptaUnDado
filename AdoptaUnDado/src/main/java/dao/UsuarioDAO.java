@@ -48,15 +48,16 @@ public class UsuarioDAO {
 
 		try {
 			Connection con = ds.getConnection();
-			String sql = "SELECT dni, nombre, apellido, password FROM usuario where dni = ?";
+			String sql = "SELECT * FROM usuario where dni = ?";
 			PreparedStatement st = con.prepareStatement(sql);
 			st.setString(1, dni);
 
 			ResultSet rs = st.executeQuery();
 
 			if (rs.next()) {
-				usuario = new Usuario(rs.getString("dni"), rs.getString("nombre"), rs.getString("apellido"),
-						rs.getString("password"));
+				usuario = new Usuario(dni, rs.getString("nombre"), rs.getString("apellido"), rs.getString("password"), rs.getString("descripcion"), rs.getString("direccion"), rs.getString("municipio"), rs.getString("provincia"), rs.getString("pais"), rs.getString("codigopostal"), rs.getString("email"), rs.getString("telefono"), rs.getString("imagen"), rs.getInt("rol"), rs.getInt("verificado"));
+				/*usuario = new Usuario(rs.getString("dni"), rs.getString("nombre"), rs.getString("apellido"),
+						rs.getString("password"));*/
 
 			}
 

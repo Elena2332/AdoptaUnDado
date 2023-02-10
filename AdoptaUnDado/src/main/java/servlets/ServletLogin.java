@@ -39,6 +39,10 @@ public class ServletLogin extends HttpServlet {
 			
 		}
 		
+		if (request.getParameter("perfil") != null) {
+			request.getRequestDispatcher("perfil.jsp").forward(request, response);
+		}
+		
 	}
 
 	/**
