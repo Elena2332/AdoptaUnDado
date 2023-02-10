@@ -19,7 +19,7 @@
 		<div class="container-fluid">
 			<div class="row text-center">
 				<c:forEach items="${articulos}" var="articulo">  
-				<div class="w-auto m-auto col-4">
+				<div class="w-auto m-auto my-2 col-4">
 					<a href="ServletDetalle?item=${articulo.id}" class=" text-decoration-none text-dark">
 						<div class="card" style="width: 18rem;">
 							<c:choose>
