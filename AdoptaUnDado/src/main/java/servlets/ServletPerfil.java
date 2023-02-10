@@ -57,6 +57,7 @@ public class ServletPerfil extends HttpServlet {
 			
 			if (usuarioActualizado) {
 				request.setAttribute("mensajeActualizacion", "Se han guardado los datos correctamente!");
+				request.setAttribute("usuario", usuario);
 				request.getRequestDispatcher("perfil.jsp").forward(request, response);
 			} else {
 				request.setAttribute("mensajeActualizacion", "No se ha podido guardar los cambios!");
