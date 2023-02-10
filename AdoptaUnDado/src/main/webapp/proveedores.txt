@@ -1,0 +1,4 @@
+AVATAR S.A.C.;Juan;Dados pequeños;661107314;dadospequenos@avatar.com
+BDO CONSULTING S.A.C;Jorge;Dados medianos;597174510;dadosmedianos@consulting.com
+BUREAU VERITAS S.A.;Jessica;Dados grandes;633584810;dadosgrandes@bureau.com
+CESEL S.A.;Bruno;Dados coloridos;249925725;dadoscoloridos@cesel.com
