@@ -27,7 +27,9 @@
 									<a class="col-6" href="proveedores.jsp">Proveedores</a>
 									<a class="col-6" href="administracion.jsp">Administracion</a>
 								</c:if>
-							</li>                			
+								<a href="ServletCerrarSesion" class="nav-link active">Cerrar Sesión</a>	
+							</li>
+							
 	                		<!-- usuario registrado -->
 				            <li class="list-group-item border-0 col-2 my-auto" role="button" data-bs-toggle="dropdown" aria-expanded="false">
 				            	<img src="" alt="${usuario.nombre}">

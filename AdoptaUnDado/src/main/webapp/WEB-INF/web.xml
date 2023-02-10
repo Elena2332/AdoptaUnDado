@@ -19,6 +19,10 @@
 		<servlet-name>ServletNosotros</servlet-name>
 		<servlet-class>servlets.ServletNosotros</servlet-class>
 	</servlet>
+	<servlet>
+		<servlet-name>ServletCerrarSesion</servlet-name>
+		<servlet-class>servlets.ServletCerrarSesion</servlet-class>
+	</servlet>
 	
 	<servlet-mapping>
 		<servlet-name>ServletPrueba</servlet-name>
@@ -31,6 +35,10 @@
 	<servlet-mapping>
 		<servlet-name>ServletNosotros</servlet-name>
 		<url-pattern>/ServletNosotros</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ServletCerrarSesion</servlet-name>
+		<url-pattern>/ServletCerrarSesion</url-pattern>
 	</servlet-mapping>
 	
 	<resource-ref>
