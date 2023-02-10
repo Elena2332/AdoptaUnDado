@@ -33,7 +33,7 @@
 							<div class="card-body row">
 								<div class="col-12">
 									<h2 class="h2">${articulo.nombre}</h2>
-									<span class="badge rounded-pill text-bg-secondary">${AritculoDAO.getArticulo(articulo.id_categoria)}</span>
+									<!-- <span class="badge rounded-pill text-bg-secondary">${articulo.id_categoria}</span> -->
 								</div>
 								<p class="col">${articulo.precio}&euro;</p>
 							</div>

@@ -7,6 +7,8 @@
 	<welcome-file-list>
 		<welcome-file>index.jsp</welcome-file>
 	</welcome-file-list>
+	
+	
 	<servlet>
 		<servlet-name>ServletPrueba</servlet-name>
 		<servlet-class>servlets.ServletPrueba</servlet-class>
@@ -22,6 +24,10 @@
 	<servlet>
 		<servlet-name>ServletCerrarSesion</servlet-name>
 		<servlet-class>servlets.ServletCerrarSesion</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>ServletDetalle</servlet-name>
+		<servlet-class>servlets.ServletDetalle</servlet-class>
 	</servlet>
 	
 	<servlet-mapping>
@@ -39,6 +45,10 @@
 	<servlet-mapping>
 		<servlet-name>ServletCerrarSesion</servlet-name>
 		<url-pattern>/ServletCerrarSesion</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ServletDetalle</servlet-name>
+		<url-pattern>/ServletDetalle</url-pattern>
 	</servlet-mapping>
 	
 	<resource-ref>

@@ -13,7 +13,7 @@ import beans.Articulo;
 import beans.Usuario;
 
 public class ArticuloDAO {
-	// Método para coger todos los articulos
+	// Mï¿½todo para coger todos los articulos
 		public static ArrayList<Articulo> getAllArticulos(DataSource ds) {
 
 			ArrayList<Articulo> arrArticulo = new ArrayList<Articulo>();
@@ -40,7 +40,7 @@ public class ArticuloDAO {
 			return arrArticulo;
 		}
 
-		// Método para coger un articulo
+		// Mï¿½todo para coger un articulo
 		public static Articulo getArticulo(DataSource ds, int id) {
 
 			Articulo articulo = null;
@@ -67,7 +67,7 @@ public class ArticuloDAO {
 			return articulo;
 		}
 
-		// Método para insertar articulo
+		// Mï¿½todo para insertar articulo
 //		public static boolean insertUsuario(DataSource ds, Usuario usu) {
 	//
 	//
@@ -116,7 +116,7 @@ public class ArticuloDAO {
 			return false;
 		}
 
-		//Método para comprobar si existe el usuario al loguearse
+		//Mï¿½todo para comprobar si existe el usuario al loguearse
 		/*public static boolean comprobarUsuario(DataSource ds, String email, String pass) {
 			
 			boolean existeUsuario = false;
