@@ -234,6 +234,37 @@ public class UsuarioDAO {
 		}
 
 		return false;
-}
+	}
+	
+	//Método para actualizar los datos de un usuario
+		public static boolean actualizarUsuario(DataSource ds, Usuario usu) {
+
+			try {
+				String sql = "UPDATE usuario SET nombre=?, apellido=?, password=?, descripcion=?, direccion=?, municipio=?, provincia=?, pais=?, codigopostal=?, telefono=? where dni=?";
+				Connection con = ds.getConnection();
+				PreparedStatement st = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+				st.setString(1, usu.getNombre());
+				st.setString(2, usu.getApellido());
+				st.setString(3, usu.getPassword());
+				st.setString(4, usu.getDescripcion());
+				st.setString(5, usu.getDireccion());
+				st.setString(6, usu.getMunicipio());
+				st.setString(7, usu.getProvincia());
+				st.setString(8, usu.getPais());
+				st.setString(9, usu.getCodigopostal());
+				st.setString(10, usu.getTelefono());
+				st.setString(11, usu.getDni());
+				st.executeUpdate();
+	            
+	            st.close();
+	            con.close();
+	            return true;
+		
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+
+			return false;
+		}
 
 }
