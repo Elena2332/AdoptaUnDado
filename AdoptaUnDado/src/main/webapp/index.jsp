@@ -16,28 +16,32 @@
 	<body>	
 		<jsp:include page="menu.jsp"></jsp:include>
 		
-		<div class="d-flex flex-row justify-content-evenly">
-			<c:forEach items="${articulos}" var="articulo">    
-				<a href="ServletDetalle?item=${articulo.id}">
-					<div class="card" style="width: 18rem;">
-						<c:choose>
-	                		<c:when test="${articulo.imagen == null}">						
-								<div class="bg-secondary opacity-50 w-100 h-100">
-									<p class="text-dark">NO FOTO</p>
+		<div class="container-fluid">
+			<div class="row text-center">
+				<c:forEach items="${articulos}" var="articulo">  
+				<div class="w-auto m-auto col-4">
+					<a href="ServletDetalle?item=${articulo.id}" class=" text-decoration-none text-dark">
+						<div class="card" style="width: 18rem;">
+							<c:choose>
+								<c:when test="${articulo.imagen == null || articulo.imagen.length() < 3}">  <!-- Sin imagen -->						
+									<img src="img/SIN-IMAGEN.jpg" class="card-img-top" alt="img_producto :)">
+								</c:when>
+								<c:otherwise>
+									<img class="img-fluid" src="${articulo.imagen}" class="card-img-top" alt="img_producto :)">
+								</c:otherwise>
+							</c:choose>
+							<div class="card-body row">
+								<div class="col-12">
+									<h2 class="h2">${articulo.nombre}</h2>
+									<span class="badge rounded-pill text-bg-secondary">${AritculoDAO.getArticulo(articulo.id_categoria)}</span>
 								</div>
-							</c:when>
-							<c:otherwise>
-								<img src="${articulo.imagen}" class="card-img-top" alt="img_producto :)">
-							</c:otherwise>
-						</c:choose>
-						<div class="card-body ">
-					    	<h2 class="h2">${articulo.nombre}</h2>
-					    	<span class=" badge rounded-pill text-bg-secondary">${articulo.id_categoria}</span>
-					    	<p>${item.precio}</p>
+								<p class="col">${articulo.precio}&euro;</p>
+							</div>
 						</div>
-					</div>
-				</a>
-			</c:forEach>
+					</a>
+				</div>  
+				</c:forEach>
+			</div>
 		</div>
 		
 		<jsp:include page="footer.jsp"></jsp:include>
