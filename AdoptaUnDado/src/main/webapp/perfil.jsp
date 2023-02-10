@@ -1,3 +1,4 @@
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -25,6 +26,7 @@
 	<div class="container" style="margin: auto; width: 50%;">
 		<h2 style="text-align: center; background: #ffdc76;">PERFIL DEL USUARIO</h2>
 		<form action="ServletPerfil" method="post">
+			<p><c:out value="${mensajeActualizacion}" /></p>
 			<table style="margin: auto; border: 1px solid #ffdc76; margin-bottom: 15px">
 				<tr>
 					<td style="border: 1px solid #ffdc76"><label>DNI</label></td>
@@ -40,7 +42,7 @@
 				</tr>
 				<tr>
 					<td style="border: 1px solid #ffdc76"><label>Email</label></td>
-					<td style="border: 1px solid #ffdc76"><input type="email" name="email" value="${usuario.getEmail()}"></td>
+					<td style="border: 1px solid #ffdc76"><input type="email" name="email" value="${usuario.getEmail()}" disabled></td>
 				</tr>
 				<tr>
 					<td style="border: 1px solid #ffdc76"><label>Password</label></td>
@@ -68,7 +70,7 @@
 				</tr>
 				<tr>
 					<td style="border: 1px solid #ffdc76"><label>Código postal</label></td>
-					<td style="border: 1px solid #ffdc76"><input type="text" name="cp" value="${usuario.getCodigopostal()}"></td>
+					<td style="border: 1px solid #ffdc76"><input type="text" name="codigopostal" value="${usuario.getCodigopostal()}"></td>
 				</tr>
 				<tr>
 					<td style="border: 1px solid #ffdc76"><label>Teléfono</label></td>
@@ -77,6 +79,9 @@
 				<tr>
 					<td style="border: 1px solid #ffdc76"><label>Imagen</label></td>
 					<td style="border: 1px solid #ffdc76"><input type="file" accept="image/*" name="imagen" value="${usuario.getImagen()}"></td>
+				</tr>
+				<tr>
+					<td><button type="submit" name="guardarCambios">Guardar Cambios</button></td>
 				</tr>
 			</table>
 		</form>
