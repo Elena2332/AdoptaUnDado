@@ -39,10 +39,6 @@ public class ServletLogin extends HttpServlet {
 			
 		}
 		
-		if (request.getParameter("perfil") != null) {
-			request.getRequestDispatcher("perfil.jsp").forward(request, response);
-		}
-		
 	}
 
 	/**
@@ -72,7 +68,7 @@ public class ServletLogin extends HttpServlet {
 					//Si existe usuario, se guarda en la sesión y se redirige a index.jsp
 					HttpSession session = request.getSession(true);
 					session.setAttribute("usuario",UsuarioDAO.getUsuario(ds, UsuarioDAO.sacarDniUsuario(ds, correo)));
-					request.getRequestDispatcher("index.jsp").forward(request, response);
+					response.sendRedirect("index.jsp");
 				} else {
 					//Si no existe usuario o no está verificado, se redirige a login.jsp con un mensaje de error
 					request.setAttribute("mensajeError", "Usuario no encontrado/verificado!");
