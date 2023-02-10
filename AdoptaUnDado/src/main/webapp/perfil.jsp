@@ -3,8 +3,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
-<title>Perfil</title>
+	<meta charset="ISO-8859-1">
+	<title>Perfil</title>
+	<link rel="stylesheet" href="css/css.css"/>
 </head>
 <body>
 	<jsp:include page="menu.jsp" />

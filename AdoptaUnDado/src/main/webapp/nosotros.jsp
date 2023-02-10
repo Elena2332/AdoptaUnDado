@@ -16,6 +16,7 @@
 	crossorigin="anonymous"></script>
 <script src="https://kit.fontawesome.com/d2bdcf2612.js"
 	crossorigin="anonymous"></script>
+		<link rel="stylesheet" href="css/css.css"/>
 </head>
 <body class="h-100 m-0">
 	<jsp:include page="menu.jsp" />
