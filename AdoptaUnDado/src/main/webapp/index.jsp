@@ -17,22 +17,22 @@
 		<jsp:include page="menu.jsp"></jsp:include>
 		
 		<div class="d-flex flex-row justify-content-evenly">
-			<c:forEach items="${articulos}" var="item">    
-				<a href="ServletDetalle?item=${item.id}">
+			<c:forEach items="${articulos}" var="articulo">    
+				<a href="ServletDetalle?item=${articulo.id}">
 					<div class="card" style="width: 18rem;">
 						<c:choose>
-	                		<c:when test="${item.img == null}">						
+	                		<c:when test="${articulo.imagen == null}">						
 								<div class="bg-secondary opacity-50 w-100 h-100">
 									<p class="text-dark">NO FOTO</p>
 								</div>
 							</c:when>
 							<c:otherwise>
-								<img src="" class="card-img-top" alt="img_producto :)">
+								<img src="${articulo.imagen}" class="card-img-top" alt="img_producto :)">
 							</c:otherwise>
 						</c:choose>
 						<div class="card-body ">
-					    	<h2 class="h2">${item.nombre}</h2>
-					    	<span class=" badge rounded-pill text-bg-secondary">${item.categoria}</span>
+					    	<h2 class="h2">${articulo.nombre}</h2>
+					    	<span class=" badge rounded-pill text-bg-secondary">${articulo.id_categoria}</span>
 					    	<p>${item.precio}</p>
 						</div>
 					</div>

@@ -20,14 +20,14 @@ public class ArticuloDAO {
 
 			try {
 				Connection con = ds.getConnection();
-				String sql = "SELECT id, nombre, idCategoria, precio, stock FROM articulo";
+				String sql = "SELECT id, nombre, idCategoria, imagen, precio, stock FROM articulo";
 				Statement st = con.createStatement();
 
 				ResultSet rs = st.executeQuery(sql);
 
 				while (rs.next()) {
 					Articulo articulo = new Articulo(rs.getInt("id"), rs.getString("nombre"), rs.getInt("idCategoria"),
-							rs.getDouble("precio"), rs.getInt("stock"));
+							rs.getDouble("precio"), rs.getString("imagen"), rs.getInt("stock"));
 
 					arrArticulo.add(articulo);
 				}
@@ -47,7 +47,7 @@ public class ArticuloDAO {
 
 			try {
 				Connection con = ds.getConnection();
-				String sql = "SELECT id, nombre, idCategoria, precio, stock FROM articulo where id = ?";
+				String sql = "SELECT id, nombre, idCategoria, imagen, precio, stock FROM articulo where id = ?";
 				PreparedStatement st = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 				st.setInt(1, id);
 
@@ -55,7 +55,7 @@ public class ArticuloDAO {
 
 				if (rs.next()) {
 					articulo  = new Articulo(rs.getInt("id"), rs.getString("nombre"), rs.getInt("idCategoria"),
-							rs.getDouble("precio"), rs.getInt("stock"));
+							rs.getDouble("precio"), rs.getString("imagen"), rs.getInt("stock"));
 
 				}
 
@@ -117,7 +117,7 @@ public class ArticuloDAO {
 		}
 
 		//Método para comprobar si existe el usuario al loguearse
-		public static boolean comprobarUsuario(DataSource ds, String email, String pass) {
+		/*public static boolean comprobarUsuario(DataSource ds, String email, String pass) {
 			
 			boolean existeUsuario = false;
 			
@@ -141,6 +141,6 @@ public class ArticuloDAO {
 			
 			return existeUsuario;
 			
-		}
+		}*/
 
 }

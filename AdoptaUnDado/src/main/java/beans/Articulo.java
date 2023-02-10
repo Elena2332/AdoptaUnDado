@@ -6,7 +6,7 @@ public class Articulo {
 	private int id,id_categoria, stock;
 	private String nombre;
 	private double precio;
-	private String imagen;   //Blob
+	private String imagen;   //ruta de la imagen
 	
 	public Articulo(int id,String nombre, int id_categoria, double precio, String imagen, int stock) {
 		this.id = id;
