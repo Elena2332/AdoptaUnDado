@@ -16,7 +16,7 @@
 	    <div class="container-fluid">
 	        <div class="w-75 m-auto">
 	            <div class="formulario bg-white border border-secondary my-5 p-3">
-	                <img src="" alt="" class=""><p>Logotipo</p>
+	                <img src="img/placeholder_logo.jpeg" alt="logo" class="logo w-25 offset-4 col-4 p-3">
 	                <p>
 		                <%
 		                	if (request.getParameter("entrarLogin") != null) {
