@@ -21,19 +21,19 @@
 <body class="vh-100 p-5 m-0">
 	<jsp:include page="menu.jsp" />
 	
-	<div class="container-fluid row">
+	<div class="container-fluid row  h-75">
 		<div class="col-5"> 
-			<img src="${articulo.imagen}" alt="${articulo.nombre}">
+			<img src="${articulo.imagen}" alt="${articulo.nombre}" class="w-100 h-100">
 		</div>
-		<div class="col-7">
-			<h2>${articulo.nombre}</h2>
-			<div>${articulo.precio}</div>
-			<div class="border-1 rounded">
-				<a href="ServletDetalle?cant=${ cantidad-1 }" class="border-0 rounded-start bg-primary opacity-75 ">-</a>
-				<input type="number" class="border-0 " id="inpCantidad" value="${ cantidad }">
-				<a href="ServletDetalle?cant=${ cantidad+1 }" class="border-0 rounded-end bg-primary opacity-75 ">+</a>
-				<button id="btnAniadir" class="border-primary rounded bg-primary opacity-75 text-light">Meter al carrito</button>
+		<div class="col-7 ">
+			<h2 class="my-5">${articulo.nombre}</h2>
+			<div class="my-5">${articulo.precio}&euro;</div>
+			<div class="border-1 rounded row ">
+				<a href="ServletDetalle?cant=${ cantidad-1 }" class="border-0 rounded-start bg-primary opacity-75 text-light text-decoration-none text-center col-1">-</a>
+				<input type="number" class="border-0 col-3 text-center" id="inpCantidad" value="${ cantidad }">
+				<a href="ServletDetalle?cant=${ cantidad+1 }" class="border-0 rounded-end bg-primary opacity-75 text-light text-decoration-none text-center col-1">+</a>
 			</div>
+			<button id="btnAniadir" class="border-primary rounded bg-primary opacity-75 text-light col-5 my-1">Meter al carrito</button>
 		</div>
 	</div>
 	

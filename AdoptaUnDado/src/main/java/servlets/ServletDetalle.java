@@ -81,6 +81,8 @@ public class ServletDetalle extends HttpServlet {
 				session.setAttribute("articulo", arti);     // articulo seleccionado
 				//session.setAttribute("categoria", CategoriaDAO.getCategoria(ds, arti.getId_categoria()));
 				session.setAttribute("cantidad", 1);
+				System.out.println(id);
+				System.out.println(arti);
 			}
 			else
 				request.getRequestDispatcher("index.jsp").forward(request, response);

@@ -43,7 +43,7 @@ public class ArticuloDAO {
 		// M�todo para coger un articulo
 		public static Articulo getArticulo(DataSource ds, int id) {
 
-			Articulo articulo = null;
+			Articulo articulo;
 
 			try {
 				Connection con = ds.getConnection();
@@ -51,11 +51,12 @@ public class ArticuloDAO {
 				PreparedStatement st = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 				st.setInt(1, id);
 
-				ResultSet rs = st.executeQuery(sql);
+				ResultSet rs = st.executeQuery();
 
-				if (rs.next()) {
+				while (rs.next()) {
 					articulo  = new Articulo(rs.getInt("id"), rs.getString("nombre"), rs.getInt("idCategoria"),
 							rs.getDouble("precio"), rs.getString("imagen"), rs.getInt("stock"));
+					return articulo;
 
 				}
 
@@ -64,7 +65,7 @@ public class ArticuloDAO {
 				e.printStackTrace();
 			}
 
-			return articulo;
+			return null;
 		}
 
 		// M�todo para insertar articulo
